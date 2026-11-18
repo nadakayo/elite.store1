@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Elite Store — curated fashion, sneakers and timeless essentials.">
+  <title>Elite Store | Elevated Essentials</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b0b0a;--panel:#141412;--panel2:#1b1a17;--gold:#c9a45c;--gold2:#e3c783;--cream:#f2eee5;--muted:#aaa59a;--line:#302d26}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--cream);font-family:"DM Sans",sans-serif}
+    a{color:inherit;text-decoration:none} button,input,select{font:inherit}
+    .announcement{background:var(--gold);color:#17140e;text-align:center;padding:9px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+    header{position:sticky;top:0;z-index:20;background:rgba(11,11,10,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1200px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{font-family:"Playfair Display",serif;font-size:25px;letter-spacing:2px}.logo span{color:var(--gold)}
+    .navlinks{display:flex;gap:28px;color:#d0cabe;font-size:12px;letter-spacing:1.4px;text-transform:uppercase}
+    .navlinks a:hover{color:var(--gold2)} .cart-btn{border:1px solid var(--gold);background:transparent;color:var(--gold2);padding:10px 15px;cursor:pointer;letter-spacing:1px;font-size:12px}
+    .hero{min-height:590px;display:grid;grid-template-columns:1fr 1fr;max-width:1200px;margin:auto;padding:68px 24px 75px;align-items:center;gap:50px}
+    .eyebrow{color:var(--gold);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700}
+    h1,h2,h3{font-family:"Playfair Display",serif;font-weight:500} h1{font-size:clamp(48px,6vw,78px);line-height:1.04;margin:20px 0}
+    h1 em{font-style:normal;color:var(--gold2)} .hero p{color:var(--muted);max-width:470px;line-height:1.8;font-size:15px}
+    .primary{display:inline-block;background:var(--gold);color:#17140e;border:0;padding:15px 25px;margin-top:22px;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer}
+    .primary:hover{background:var(--gold2)} .hero-image{height:455px;position:relative;overflow:hidden;background:#24221c}
+    .hero-image img{width:100%;height:100%;object-fit:cover;filter:brightness(.78);display:block}
+    .hero-image:after{content:"";position:absolute;inset:18px;border:1px solid rgba(227,199,131,.55);pointer-events:none}
+    .hero-stamp{position:absolute;bottom:35px;left:35px;background:rgba(11,11,10,.82);padding:17px 22px;z-index:1}
+    .hero-stamp small{display:block;color:var(--gold);letter-spacing:2px;font-size:9px}.hero-stamp strong{font-family:"Playfair Display";font-size:21px;font-weight:500}
+    .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);max-width:1200px;margin:auto;padding:24px;gap:20px;text-align:center}
+    .trust strong{display:block;color:var(--gold2);font-family:"Playfair Display";font-size:17px;font-weight:500}.trust span{font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+    section.products{max-width:1200px;margin:auto;padding:90px 24px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
+    h2{font-size:42px;margin:10px 0 0}.section-head p{color:var(--muted);font-size:13px;max-width:360px;line-height:1.7}
+    .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:28px}
+    .filter{background:transparent;border:1px solid var(--line);color:#c9c3b7;padding:9px 15px;font-size:11px;letter-spacing:1px;cursor:pointer}
+    .filter.active,.filter:hover{border-color:var(--gold);color:var(--gold2)}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .product{background:var(--panel);border:1px solid #24221d;transition:.25s;overflow:hidden}
+    .product:hover{transform:translateY(-4px);border-color:#6e592f}
+    .product-img{height:275px;background:#222;position:relative;overflow:hidden}
+    .product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .product:hover img{transform:scale(1.05)}
+    .tag{position:absolute;top:13px;left:13px;background:var(--gold);color:#16130d;padding:6px 9px;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+    .product-info{padding:17px}.category{font-size:9px;color:var(--gold);letter-spacing:2px;text-transform:uppercase}
+    .product h3{font-size:19px;margin:8px 0}.product-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:15px}
+    .price{font-size:14px;color:var(--gold2);font-weight:700}.add{background:transparent;border:1px solid var(--gold);color:var(--gold2);padding:8px 11px;font-size:10px;letter-spacing:1px;cursor:pointer}
+    .add:hover{background:var(--gold);color:#17140e}
+    .story{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:75px 24px}
+    .story-inner{max-width:1000px;margin:auto;text-align:center}.story h2{font-size:40px}.story p{max-width:650px;margin:18px auto;color:var(--muted);line-height:1.9;font-size:14px}
+    .newsletter{max-width:700px;margin:0 auto;padding:75px 24px;text-align:center}.newsletter p{color:var(--muted);font-size:13px}
+    .newsletter form{display:flex;gap:8px;max-width:480px;margin:22px auto 0}.newsletter input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);padding:14px;color:white}
+    footer{border-top:1px solid var(--line);padding:30px 24px;color:var(--muted);font-size:11px}
+    .footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .drawer-bg{display:none;position:fixed;inset:0;background:#000b;z-index:40}.drawer-bg.open{display:block}
+    .drawer{position:absolute;right:0;top:0;height:100%;width:min(430px,100%);background:var(--panel);padding:25px;overflow:auto;border-left:1px solid var(--gold)}
+    .drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:15px}
+    .drawer h2{font-size:28px;margin:0}.close{background:none;border:0;color:white;font-size:25px;cursor:pointer}
+    .cart-items{padding:15px 0}.cart-row{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:13px}
+    .cart-row small{display:block;color:var(--muted);margin-top:5px}.remove{background:none;border:0;color:#d8a66a;cursor:pointer}
+    .total{display:flex;justify-content:space-between;padding:18px 0;font-weight:700;color:var(--gold2)}
+    .checkout label{display:block;font-size:11px;color:var(--muted);margin:12px 0 6px}.checkout input,.checkout textarea{width:100%;background:#0c0c0b;border:1px solid var(--line);padding:12px;color:white}
+    .checkout textarea{min-height:75px;resize:vertical}.checkout .primary{width:100%}
+    .empty{color:var(--muted);padding:25px 0;font-size:13px}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:48px}.hero-image{height:380px}.grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+    @media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:10px}.product-img{height:190px}.product-info{padding:12px}.product h3{font-size:16px}.section-head{display:block}h2{font-size:34px}.trust{padding:18px 10px}.trust strong{font-size:14px}.trust span{font-size:8px}.hero{padding-left:18px;padding-right:18px}.newsletter form{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="announcement">Complimentary delivery on orders over 900 MAD · New collection now live</div>
+  <header><nav class="nav">
+    <a class="logo" href="#">ELITE <span>STORE.</span></a>
+    <div class="navlinks"><a href="#shop">Shop</a><a href="#story">Our story</a><a href="#contact">Contact</a></div>
+    <button class="cart-btn" onclick="openCart()">BAG (<span id="cart-count">0</span>)</button>
+  </nav></header>
+  <main>
+    <div class="hero">
+      <div>
+        <div class="eyebrow">The new standard · Est. 2026</div>
+        <h1>Wear your<br><em>own standard.</em></h1>
+        <p>Considered essentials. Elevated streetwear. Iconic sneakers. Discover a curated edit made for those who move with confidence.</p>
+        <a class="primary" href="#shop">Explore collection</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85" alt="Fashion collection editorial">
+        <div class="hero-stamp"><small>ELITE SELECTION</small><strong>Beyond the ordinary.</strong></div>
+      </div>
+    </div>
+    <div class="trust">
+      <div><strong>Curated style</strong><span>Everyday icons</span></div>
+      <div><strong>Quality first</strong><span>Selected with care</span></div>
+      <div><strong>Easy ordering</strong><span>Direct customer support</span></div>
+    </div>
+    <section class="products" id="shop">
+      <div class="section-head"><div><div class="eyebrow">The collection</div><h2>Featured pieces</h2></div><p>A considered selection of wardrobe staples and statement pieces. Find your next favourite.</p></div>
+      <div class="filters">
+        <button class="filter active" data-filter="all">All pieces</button>
+        <button class="filter" data-filter="clothing">Clothing</button>
+        <button class="filter" data-filter="shoes">Shoes</button>
+        <button class="filter" data-filter="accessories">Accessories</button>
+      </div>
+      <div class="grid" id="product-grid"></div>
+    </section>
+    <section class="story" id="story"><div class="story-inner">
+      <div class="eyebrow">A different point of view</div><h2>Less noise. More presence.</h2>
+      <p>Elite Store is built around a simple idea: personal style should feel effortless. We bring together versatile clothing and footwear with a clean, confident point of view. Choose pieces that feel like you.</p>
+      <a class="primary" href="#shop">Find your fit</a>
+    </div></section>
+    <section class="newsletter" id="contact">
+      <div class="eyebrow">Stay in the know</div><h2>Get the latest edit.</h2><p>Have a question or want to place an order? Get in touch and we'll help you out.</p>
+      <a class="primary" href="https://wa.me/212600000000" id="contact-link">Contact us on WhatsApp</a>
+    </section>
+  </main>
+  <footer><div class="footer-inner"><span class="logo">ELITE <span>STORE.</span></span><span>© 2026 Elite Store. All rights reserved.</span><span>Instagram · WhatsApp</span></div></footer>
+
+  <div class="drawer-bg" id="drawer-bg" onclick="if(event.target===this)closeCart()">
+    <aside class="drawer">
+      <div class="drawer-head"><h2>Your bag</h2><button class="close" onclick="closeCart()">×</button></div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="total"><span>Total</span><span id="cart-total">0 MAD</span></div>
+      <form class="checkout" onsubmit="submitOrder(event)">
+        <div class="eyebrow">Delivery details</div>
+        <label for="customer-name">Full name</label><input id="customer-name" required placeholder="Your name">
+        <label for="customer-phone">Phone number</label><input id="customer-phone" required type="tel" placeholder="+212 ...">
+        <label for="customer-city">City / address</label><input id="customer-city" required placeholder="City and delivery address">
+        <label for="customer-note">Notes (optional)</label><textarea id="customer-note" placeholder="Size, colour or other details"></textarea>
+        <button class="primary" type="submit">Send order on WhatsApp</button>
+        <p style="font-size:10px;color:#aaa59a;line-height:1.6">Demo checkout: replace the WhatsApp number in the code before accepting real orders. No online payment is processed on this demo site.</p>
+      </form>
+    </aside>
+  </div>
+  <script>
+    // EDIT THESE SETTINGS BEFORE LAUNCH:
+    const STORE_WHATSAPP = "212600000000"; // Replace with your WhatsApp number, digits only, including country code.
+    const CURRENCY = "MAD";
+    const products = [
+      {id:1,name:"Essential Oversized Tee",category:"clothing",label:"Bestseller",price:229,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"},
+      {id:2,name:"Classic Street Hoodie",category:"clothing",label:"New",price:449,image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85"},
+      {id:3,name:"Urban Runner Sneakers",category:"shoes",label:"Featured",price:699,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85"},
+      {id:4,name:"Minimal Leather Sneakers",category:"shoes",label:"Essential",price:799,image:"https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=85"},
+      {id:5,name:"Tailored Everyday Jacket",category:"clothing",label:"Limited",price:649,image:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=85"},
+      {id:6,name:"Signature Cap",category:"accessories",label:"New",price:159,image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85"},
+      {id:7,name:"Modern Crossbody Bag",category:"accessories",label:"Popular",price:329,image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=85"},
+      {id:8,name:"Court Classic Sneakers",category:"shoes",label:"Classic",price:749,image:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=800&q=85"}
+    ];
+    let cart = [];
+    const money = n => `${n.toLocaleString("en-US")} ${CURRENCY}`;
+    function renderProducts(filter="all"){
+      const list=products.filter(p=>filter==="all"||p.category===filter);
+      document.getElementById("product-grid").innerHTML=list.map(p=>`
+        <article class="product"><div class="product-img"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="tag">${p.label}</span></div>
+        <div class="product-info"><div class="category">${p.category}</div><h3>${p.name}</h3><div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add" onclick="addToCart(${p.id})">ADD +</button></div></div></article>`).join("");
+    }
+    document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{
+      document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");renderProducts(btn.dataset.filter);
+    }));
+    function addToCart(id){const p=products.find(x=>x.id===id);const found=cart.find(x=>x.id===id);found?found.qty++:cart.push({...p,qty:1});renderCart();openCart();}
+    function changeQty(id,delta){const item=cart.find(x=>x.id===id);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);renderCart();}
+    function removeItem(id){cart=cart.filter(x=>x.id!==id);renderCart();}
+    function renderCart(){
+      document.getElementById("cart-count").textContent=cart.reduce((s,x)=>s+x.qty,0);
+      const holder=document.getElementById("cart-items");
+      holder.innerHTML=cart.length?cart.map(x=>`<div class="cart-row"><div><strong>${x.name}</strong><small>${money(x.price)} · Qty: ${x.qty}</small><button class="remove" onclick="changeQty(${x.id},-1)">−</button> <button class="remove" onclick="changeQty(${x.id},1)">+</button></div><button class="remove" onclick="removeItem(${x.id})">Remove</button></div>`).join(""):'<div class="empty">Your bag is empty. Add a piece from the collection.</div>';
+      document.getElementById("cart-total").textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0));
+    }
+    function openCart(){document.getElementById("drawer-bg").classList.add("open");}
+    function closeCart(){document.getElementById("drawer-bg").classList.remove("open");}
+    function submitOrder(e){
+      e.preventDefault();if(!cart.length){alert("Your bag is empty.");return;}
+      if(STORE_WHATSAPP==="212600000000"){alert("Please set your real WhatsApp number in index.html first.");return;}
+      const name=document.getElementById("customer-name").value.trim(),phone=document.getElementById("customer-phone").value.trim(),city=document.getElementById("customer-city").value.trim(),note=document.getElementById("customer-note").value.trim();
+      const lines=cart.map(x=>`• ${x.name} x${x.qty} — ${money(x.price*x.qty)}`).join("\n");
+      const total=money(cart.reduce((s,x)=>s+x.price*x.qty,0));
+      const msg=`Hello Elite Store, I'd like to place an order:\n\n${lines}\n\nTotal: ${total}\n\nName: ${name}\nPhone: ${phone}\nAddress: ${city}\nNotes: ${note||"None"}`;
+      window.open(`https://wa.me/${STORE_WHATSAPP}?text=${encodeURIComponent(msg)}`,"_blank");
+    }
+    document.getElementById("contact-link").href=`https://wa.me/${STORE_WHATSAPP}`;
+    renderProducts();renderCart();
+  </script>
+</body>
+</html>
